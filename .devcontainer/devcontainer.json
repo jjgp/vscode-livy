@@ -1,0 +1,8 @@
+{
+    "image": "node:lts",
+    "extensions": ["dbaeumer.vscode-eslint"],
+    "postCreateCommand": "npm ci",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+    }
+}
