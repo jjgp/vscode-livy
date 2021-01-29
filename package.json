@@ -1,6 +1,6 @@
 {
 	"name": "vscode-livy",
-	"displayName": "vscode-livy",
+	"displayName": "Livy",
 	"description": "Submit Spark code snippets through Apache Livy",
 	"version": "0.0.1",
 	"engines": {
