@@ -10,7 +10,9 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:vscode-livy.helloWorld"
+		"onCommand:vscode-livy.helloWorld",
+		"onLanguage:python",
+		"onLanguage:scala"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
