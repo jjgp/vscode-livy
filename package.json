@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:vscode-livy.helloWorld",
+		"onCommand:vscode-livy.specifyUrl",
 		"onLanguage:python",
 		"onLanguage:scala"
 	],
@@ -18,8 +18,8 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "vscode-livy.helloWorld",
-				"title": "Hello World"
+				"command": "vscode-livy.specifyUrl",
+				"title": "Livy: Specify local or remote URL hosting Livy server"
 			}
 		]
 	},
