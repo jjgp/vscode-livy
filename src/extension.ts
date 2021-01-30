@@ -1,15 +1,8 @@
-import { commands, ExtensionContext, window } from 'vscode';
-
-namespace Commands {
-    export const specifyUrl = 'vscode-livy.specifyUrl';
-}
+import { ExtensionContext } from 'vscode';
+import { registerCommands } from './commands';
 
 export function activate(context: ExtensionContext) {
-    context.subscriptions.push(
-        commands.registerCommand(Commands.specifyUrl, () => {
-            window.showInformationMessage("Eventually you'll be able to specify a URL!");
-        }),
-    );
+    registerCommands(context).forEach((disposable) => context.subscriptions.push(disposable));
 }
 
 export function deactivate() {}
