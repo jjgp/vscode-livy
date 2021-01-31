@@ -23,6 +23,9 @@ export interface Session {
 }
 
 export interface SessionConfiguration {
+    /**
+     * @deprecated kind is no longer required as of version 0.5.0-incubating
+     */
     kind: Kind;
     proxyUser: string;
     jars: string[];
