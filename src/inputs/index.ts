@@ -5,6 +5,7 @@ interface URLInputBoxPromptOptions {
 }
 
 type URLInputBoxPlaceholderOptions = URLInputBoxPromptOptions | { placeHolder: string };
+
 type URLInputBoxValueOptions = URLInputBoxPromptOptions | { value: string };
 
 export const urlInputBox = (options: URLInputBoxPlaceholderOptions | URLInputBoxValueOptions) =>

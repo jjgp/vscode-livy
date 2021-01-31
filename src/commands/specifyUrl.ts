@@ -1,5 +1,6 @@
 import { CommandRecord } from './base';
 import { urlInputBox } from '../inputs';
+import { getSessions } from '../livy-rest-api';
 
 export class SpecifyUrl extends CommandRecord {
     command: string = 'vscode-livy.specifyUrl';
@@ -11,5 +12,6 @@ export class SpecifyUrl extends CommandRecord {
         const options = previousUrl ? { value: previousUrl, prompt } : { placeHolder: 'https://hostname:8998', prompt };
         const url = await urlInputBox(options);
         this.context.globalState.update(key, url);
+        console.log(await getSessions(url || ''));
     };
 }
