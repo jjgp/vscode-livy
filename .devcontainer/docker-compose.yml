@@ -1,0 +1,16 @@
+
+version: "3"
+services:
+  codespace:
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    depends_on:
+      - livy
+    image: node:lts
+    volumes:
+      - ../:/workspace:cached
+  livy:
+    build:
+      context: .
+      dockerfile: livy.Dockerfile
+    ports:
+      - "8998:8998"

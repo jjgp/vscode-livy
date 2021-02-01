@@ -1,8 +1,11 @@
 {
-    "image": "node:lts",
+    "dockerComposeFile": "docker-compose.yml",
     "extensions": ["dbaeumer.vscode-eslint"],
     "postCreateCommand": "npm ci",
+    "service": "codespace",
     "settings": {
         "terminal.integrated.shell.linux": "/bin/bash",
-    }
+    },
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/workspace"
 }
