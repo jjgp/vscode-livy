@@ -13,4 +13,4 @@ services:
       context: .
       dockerfile: livy.Dockerfile
     ports:
-      - "8998:8998"
+      - "127.0.0.1:8998:8998"

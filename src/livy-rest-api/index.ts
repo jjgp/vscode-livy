@@ -11,3 +11,7 @@ export const getSessions = async (url: string): Promise<GetSessionsResponse> => 
     const response = await fetch(`${url}/sessions`);
     return await response.json();
 };
+
+export const healthCheck = async (url: string): Promise<void> => {
+    await fetch(`${url}/ui`, { method: 'HEAD' });
+};

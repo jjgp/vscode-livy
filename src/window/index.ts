@@ -1,18 +1,18 @@
 import { CancellationToken, Progress, ProgressLocation, ProgressOptions, window } from 'vscode';
 
-export type Task = (
+export type Task<R> = (
     progress: Progress<{ message?: string; increment?: number }>,
     token: CancellationToken,
-) => Thenable<any>;
+) => Thenable<R>;
 
-export const displayProgress = (title: string, task: Task) => {
+export function displayProgress<R>(title: string, task: Task<R>): Thenable<R> {
     const progressOptions: ProgressOptions = {
         location: ProgressLocation.Notification,
         title,
     };
 
-    window.withProgress(progressOptions, task);
-};
+    return window.withProgress(progressOptions, task);
+}
 
 export interface URLInputBoxPromptOptions {
     prompt: string;
