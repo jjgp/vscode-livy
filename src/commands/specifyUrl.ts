@@ -6,18 +6,18 @@ export class SpecifyUrl extends CommandRecord {
     command = 'vscode-livy.specifyUrl';
     private inputPlaceHolder = 'https://hostname:8998';
     private inputPrompt = 'Enter the URL of the Livy server';
-    private progressTitle = 'Connecting to Livy server...';
+    private key = 'livyServerUrl';
+    private progressTitle = 'Fetching sessions from Livy server...';
 
     callback = async () => {
-        const key = 'url';
-        const previousUrl = this.context.globalState.get(key);
+        const previousUrl = this.context.globalState.get(this.key);
         const options = previousUrl
             ? { value: previousUrl, prompt: this.inputPrompt }
-            : { placeHolder: this.inputPlaceHolder, prompt };
+            : { placeHolder: this.inputPlaceHolder, prompt: this.inputPrompt };
         const url = await urlInputBox(options);
 
         if (url) {
-            this.context.globalState.update(key, url);
+            this.context.globalState.update(this.key, url);
             displayProgress(this.progressTitle, () => getSessions(url));
         }
     };

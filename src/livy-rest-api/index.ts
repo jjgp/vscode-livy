@@ -1,8 +1,7 @@
-import { Session } from 'inspector';
 import fetch from 'node-fetch';
 import { Session as LivySession } from './types';
 
-interface GetSessionsResponse {
+export interface GetSessionsResponse {
     from: number;
     total: number;
     sessions: LivySession[];
