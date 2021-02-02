@@ -19,11 +19,10 @@ export class SpecifyUrl extends CommandRecord {
 
         if (url) {
             this.context.globalState.update(globalStateKeys.livyServerUrl, url);
-            try {
-                await displayProgress(this.progressTitle, () => healthCheck(url));
-            } catch (error) {
-                window.showErrorMessage(error.message);
-            }
+            const errorMessage = await displayProgress(this.progressTitle, () =>
+                healthCheck(url).catch((error) => error.message),
+            );
+            errorMessage && window.showErrorMessage(errorMessage);
         }
     };
 }
