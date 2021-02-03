@@ -1,3 +1,8 @@
-export namespace globalStateKeys {
-    export const livyServerUrl = 'livyServerUrl';
+import { Memento } from 'vscode';
+
+export interface Status {}
+
+export interface Context {
+    state: Memento;
+    status: Status;
 }

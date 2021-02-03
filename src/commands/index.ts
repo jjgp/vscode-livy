@@ -1,5 +1,4 @@
-import { ExtensionContext } from 'vscode';
+import { Context } from '../context';
 import { SpecifyUrl } from './specifyUrl';
 
-export const registerCommands = (context: ExtensionContext) =>
-    [new SpecifyUrl(context)].map((record) => record.register());
+export const registerCommands = (context: Context) => [new SpecifyUrl(context)].map((record) => record.register());

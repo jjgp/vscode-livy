@@ -14,23 +14,4 @@ export function displayProgress<R>(title: string, task: Task<R>): Thenable<R> {
     return window.withProgress(progressOptions, task);
 }
 
-export interface URLInputBoxPromptOptions {
-    prompt: string;
-}
-
-export type URLInputBoxPlaceholderOptions = URLInputBoxPromptOptions | { placeHolder: string };
-
-export type URLInputBoxValueOptions = URLInputBoxPromptOptions | { value: string };
-
-export const urlInputBox = (options: URLInputBoxPlaceholderOptions | URLInputBoxValueOptions) =>
-    window.showInputBox({
-        ...options,
-        ignoreFocusOut: true,
-        validateInput: (text) => {
-            try {
-                new URL(text);
-            } catch {
-                return 'Invalid URL specified';
-            }
-        },
-    });
+export * from './urlInputBox';

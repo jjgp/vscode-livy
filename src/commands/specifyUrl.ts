@@ -1,8 +1,8 @@
 import { window } from 'vscode';
 import { CommandRecord } from './base';
-import { displayProgress, urlInputBox } from '../window';
+import { LivyServer } from '../constants';
 import { healthCheck } from '../livy-rest-api';
-import { globalStateKeys } from '../context';
+import { displayProgress, urlInputBox } from '../window';
 
 export class SpecifyUrl extends CommandRecord {
     command = 'vscode-livy.specifyUrl';
@@ -11,18 +11,19 @@ export class SpecifyUrl extends CommandRecord {
     private progressTitle = 'Checking connection to Livy server...';
 
     callback = async () => {
-        const previousUrl = this.context.globalState.get(globalStateKeys.livyServerUrl);
+        const previousUrl = this.context.state.get(LivyServer.url);
         const options = previousUrl
             ? { value: previousUrl, prompt: this.inputPrompt }
             : { placeHolder: this.inputPlaceHolder, prompt: this.inputPrompt };
         const url = await urlInputBox(options);
 
         if (url) {
-            this.context.globalState.update(globalStateKeys.livyServerUrl, url);
+            await this.context.state.update(LivyServer.url, url);
             const errorMessage = await displayProgress(this.progressTitle, () =>
                 healthCheck(url).catch((error) => error.message),
             );
             errorMessage && window.showErrorMessage(errorMessage);
+            window.setStatusBarMessage('$(server-environment) Livy');
         }
     };
 }
