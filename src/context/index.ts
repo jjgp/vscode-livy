@@ -1,8 +1,10 @@
 import { Memento } from 'vscode';
 
-export interface Status {}
+export interface LivyStatusDisplay {
+    inProgress<R>(task: () => Thenable<R>): Thenable<R | unknown>;
+}
 
 export interface Context {
-    state: Memento;
-    status: Status;
+    memento: Memento;
+    livyStatusDisplay: LivyStatusDisplay;
 }
