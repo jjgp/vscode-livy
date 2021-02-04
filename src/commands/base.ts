@@ -1,4 +1,4 @@
-import { commands, Disposable } from 'vscode';
+import { Disposable, commands } from 'vscode';
 import { Context } from '../context';
 
 export abstract class CommandRecord {

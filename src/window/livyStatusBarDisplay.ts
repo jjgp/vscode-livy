@@ -1,5 +1,5 @@
-import { window } from 'vscode';
 import { LivyStatusDisplay } from '../context';
+import { window } from 'vscode';
 
 export class LivyStatusBarDisplay implements LivyStatusDisplay {
     private displayLivyStatusMessage(icon: string, sessionName?: string): void {

@@ -1,7 +1,7 @@
-import { CommandRecord } from './base';
 import { CommandIdentifiers, LivyServer } from '../common/constants';
-import { postSessions } from '../livy-rest-api';
+import { CommandRecord } from './base';
 import { isSession } from '../livy-rest-api/guards';
+import { postSessions } from '../livy-rest-api';
 
 export class CreateSession extends CommandRecord {
     command = CommandIdentifiers.createSession;

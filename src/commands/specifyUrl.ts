@@ -1,9 +1,9 @@
-import { window } from 'vscode';
-import { CommandRecord } from './base';
 import { CommandIdentifiers, LivyServer } from '../common/constants';
-import { isFetchError } from '../common/guards';
+import { CommandRecord } from './base';
 import { healthCheck } from '../livy-rest-api';
+import { isFetchError } from '../common/guards';
 import { urlInputBox } from '../window';
+import { window } from 'vscode';
 
 export class SpecifyUrl extends CommandRecord {
     command = CommandIdentifiers.specifyUrl;

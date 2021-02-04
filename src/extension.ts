@@ -1,6 +1,6 @@
 import { ExtensionContext } from 'vscode';
-import { registerCommands } from './commands';
 import { LivyStatusBarDisplay } from './window';
+import { registerCommands } from './commands';
 
 export function activate({ subscriptions, workspaceState }: ExtensionContext) {
     const context = { enablements: {}, memento: workspaceState, livyStatusDisplay: new LivyStatusBarDisplay() };

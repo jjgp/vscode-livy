@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
 import { Session as LivySession, SessionConfiguration } from './types';
+import fetch from 'node-fetch';
 
 export interface GetSessionsResponse {
     from: number;
