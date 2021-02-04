@@ -12,14 +12,20 @@
 	"activationEvents": [
 		"onCommand:vscode-livy.specifyUrl",
 		"onLanguage:python",
-		"onLanguage:scala"
+		"onLanguage:r",
+		"onLanguage:scala",
+		"onLanguage:sql"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
+				"command": "vscode-livy.createSession",
+				"title": "Livy: Create Session"
+			},
+			{
 				"command": "vscode-livy.specifyUrl",
-				"title": "Livy: Specify local or remote URL hosting Livy server"
+				"title": "Livy: Specify Local or Remote URL hosting Livy Server"
 			}
 		]
 	},

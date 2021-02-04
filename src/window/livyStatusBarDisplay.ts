@@ -3,7 +3,7 @@ import { LivyStatusDisplay } from '../context';
 
 export class LivyStatusBarDisplay implements LivyStatusDisplay {
     private displayLivyStatusMessage(icon: string, sessionName?: string): void {
-        sessionName = sessionName ? ` ($sessionName)` : '';
+        sessionName = sessionName ? ` (${sessionName})` : '';
         window.setStatusBarMessage(`${icon} Livy${sessionName}`);
     }
 
@@ -19,5 +19,9 @@ export class LivyStatusBarDisplay implements LivyStatusDisplay {
 
         this.displayLivyStatusMessage('$(sync~spin)');
         return task().then(onfulfilled, onrejected);
+    }
+
+    setSessionName(name: string): void {
+        this.displayLivyStatusMessage('$(check)', name);
     }
 }
