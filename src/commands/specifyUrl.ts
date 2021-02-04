@@ -20,6 +20,7 @@ export class SpecifyUrl extends CommandRecord {
         if (url) {
             this.context.memento.update(LivyServer.url, url);
             const result = await this.context.livyStatusDisplay.inProgress(() => healthCheck(url));
+            // TODO: just check for message in guard and make a more generic type.. or check that it is an abort and change the message.
             if (isFetchError(result)) {
                 result && window.showErrorMessage(result.message);
             }

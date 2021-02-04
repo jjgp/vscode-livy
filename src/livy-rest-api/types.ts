@@ -26,19 +26,19 @@ export interface SessionConfiguration {
     /**
      * @deprecated kind is no longer required as of version 0.5.0-incubating
      */
-    kind: Kind;
-    proxyUser: string;
-    jars: string[];
-    pyFiles: string[];
-    files: string[];
-    driverMemory: string;
-    driverCores: number;
-    executorMemory: string;
-    executorCores: number;
-    numExecutors: number;
-    archives: string;
-    queue: string;
-    name: string;
-    conf: { [key: string]: string };
-    heartbeatTimeoutInSecond: number;
+    kind?: Kind;
+    proxyUser?: string;
+    jars?: string[];
+    pyFiles?: string[];
+    files?: string[];
+    driverMemory?: string;
+    driverCores?: number;
+    executorMemory?: string;
+    executorCores?: number;
+    numExecutors?: number;
+    archives?: string;
+    queue?: string;
+    name?: string;
+    conf?: { [key: string]: string };
+    heartbeatTimeoutInSecond?: number;
 }
