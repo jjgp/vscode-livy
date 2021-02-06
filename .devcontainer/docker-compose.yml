@@ -9,8 +9,6 @@ services:
     volumes:
       - ../:/workspace:cached
   livy:
-    build:
-      context: .
-      dockerfile: livy.Dockerfile
+    image: jjgp/livy:4d8a912
     ports:
       - "127.0.0.1:8998:8998"

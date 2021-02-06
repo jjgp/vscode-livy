@@ -10,7 +10,7 @@ export interface GetSessionsResponse {
 
 function fetchResponse(url: string, additionalInit?: RequestInit): Promise<Response> {
     const controller = new AbortController();
-    // TODO: make request timeout configurable
+    // TODO: make request timeout configurable. This may mean the API becomes an instance in the context.
     const ms = 200;
     const timeout = setTimeout(() => controller.abort(), ms);
     const init = { signal: controller.signal, ...additionalInit };
