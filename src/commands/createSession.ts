@@ -11,6 +11,7 @@ export class CreateSession extends CommandRecord {
         const name = await sessionNameInputBox();
         const configuration = name ? { name } : undefined;
 
+        // TODO: handle canceling
         const url: string | undefined = memento.get(LivyServer.url);
         if (!url) {
             return;

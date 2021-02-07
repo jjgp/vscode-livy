@@ -15,6 +15,7 @@ export class SpecifyUrl extends CommandRecord {
             : { placeHolder: this.inputPlaceHolder, prompt: this.inputPrompt };
         const url = await urlInputBox(options);
 
+        // TODO: handle canceling
         if (url) {
             memento.update(LivyServer.url, url);
             livyStatusBarDisplay.inProgress(() => livyRestApi.healthCheck(url));

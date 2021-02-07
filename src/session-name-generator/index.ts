@@ -1,5 +1,6 @@
-import names from './menagerie';
+import * as menagerieJson from './menagerie.json';
 
 export function nameFromMenagerie(): string {
-    return names[Math.floor(Math.random() * names.length)];
+    // TODO: commit script to autogenerate these
+    return menagerieJson[Math.floor(Math.random() * menagerieJson.length)];
 }
