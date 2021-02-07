@@ -12,12 +12,14 @@ export class CreateSession extends CommandRecord {
         const configuration = name ? { name } : undefined;
 
         const url: string | undefined = memento.get(LivyServer.url);
-        if (url) {
-            const result = await livyStatusBarDisplay.inProgress(() => livyRestApi.postSessions(url, configuration));
-            if (isSession(result)) {
-                memento.update(LivyServer.activeSessionId, result.id);
-                livyStatusBarDisplay.setSessionName(name ?? result.id.toString());
-            }
+        if (!url) {
+            return;
+        }
+
+        const result = await livyStatusBarDisplay.inProgress(() => livyRestApi.postSessions(url, configuration));
+        if (isSession(result)) {
+            memento.update(LivyServer.activeSessionId, result.id);
+            livyStatusBarDisplay.setSessionName(name ?? result.id.toString());
         }
     };
 }

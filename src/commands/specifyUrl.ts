@@ -1,8 +1,6 @@
 import { CommandIdentifiers, LivyServer } from '../common/constants';
 import { CommandRecord } from './base';
-import { isFetchError } from '../common/guards';
 import { urlInputBox } from '../window';
-import { window } from 'vscode';
 
 export class SpecifyUrl extends CommandRecord {
     command = CommandIdentifiers.specifyUrl;
@@ -19,12 +17,7 @@ export class SpecifyUrl extends CommandRecord {
 
         if (url) {
             memento.update(LivyServer.url, url);
-            const result = await livyStatusBarDisplay.inProgress(() => livyRestApi.healthCheck(url));
-            // TODO: also check for timeout errors
-            // TODO: just check for message in guard and make a more generic type.. or check that it is an abort and change the message.
-            if (isFetchError(result)) {
-                result && window.showErrorMessage(result.message);
-            }
+            livyStatusBarDisplay.inProgress(() => livyRestApi.healthCheck(url));
         }
     };
 }

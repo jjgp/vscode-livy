@@ -6,6 +6,10 @@ export class LivyStatusBarDisplay {
         window.setStatusBarMessage(`${icon} Livy${sessionName}`);
     }
 
+    private displayRejection = (reason: any): void => {
+        window.showErrorMessage(JSON.stringify(reason.stack ?? reason.toString()));
+    };
+
     inProgress = <R>(task: () => Thenable<R>): Thenable<R | unknown> => {
         const onfulfilled = (result: R) => {
             this.displayLivyStatusMessage('$(check)');
@@ -13,6 +17,7 @@ export class LivyStatusBarDisplay {
         };
         const onrejected = (reason: any) => {
             this.displayLivyStatusMessage('$(error)');
+            this.displayRejection(reason);
             return reason;
         };
 

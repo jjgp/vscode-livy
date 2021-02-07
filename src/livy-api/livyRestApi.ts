@@ -39,5 +39,7 @@ export class LivyRestApi {
         return this.fetchJson(`${url}/sessions`, init);
     };
 
-    healthCheck = async (url: string): Promise<void> => void this.fetchResponse(`${url}/sessions`, { method: 'HEAD' });
+    healthCheck = async (url: string): Promise<void> => {
+        await this.fetchResponse(`${url}/sessions`, { method: 'HEAD' });
+    };
 }
