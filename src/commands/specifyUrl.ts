@@ -10,7 +10,7 @@ export class SpecifyUrl extends CommandRecord {
     private inputPrompt = 'Enter the URL of the Livy server';
 
     callback = async () => {
-        const { livyRestApi, livyStatusDisplay, memento } = this.context;
+        const { livyRestApi, livyStatusBarDisplay, memento } = this.context;
         const previousUrl = memento.get(LivyServer.url);
         const options = previousUrl
             ? { value: previousUrl, prompt: this.inputPrompt }
@@ -19,7 +19,8 @@ export class SpecifyUrl extends CommandRecord {
 
         if (url) {
             memento.update(LivyServer.url, url);
-            const result = await livyStatusDisplay.inProgress(() => livyRestApi.healthCheck(url));
+            const result = await livyStatusBarDisplay.inProgress(() => livyRestApi.healthCheck(url));
+            // TODO: also check for timeout errors
             // TODO: just check for message in guard and make a more generic type.. or check that it is an abort and change the message.
             if (isFetchError(result)) {
                 result && window.showErrorMessage(result.message);

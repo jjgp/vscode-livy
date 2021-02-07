@@ -1,13 +1,12 @@
-import { LivyStatusDisplay } from '../context';
 import { window } from 'vscode';
 
-export class LivyStatusBarDisplay implements LivyStatusDisplay {
+export class LivyStatusBarDisplay {
     private displayLivyStatusMessage(icon: string, sessionName?: string): void {
         sessionName = sessionName ? ` (${sessionName})` : '';
         window.setStatusBarMessage(`${icon} Livy${sessionName}`);
     }
 
-    inProgress<R>(task: () => Thenable<R>): Thenable<R | unknown> {
+    inProgress = <R>(task: () => Thenable<R>): Thenable<R | unknown> => {
         const onfulfilled = (result: R) => {
             this.displayLivyStatusMessage('$(check)');
             return result;
@@ -19,9 +18,9 @@ export class LivyStatusBarDisplay implements LivyStatusDisplay {
 
         this.displayLivyStatusMessage('$(sync~spin)');
         return task().then(onfulfilled, onrejected);
-    }
+    };
 
-    setSessionName(name: string): void {
+    setSessionName = (name: string): void => {
         this.displayLivyStatusMessage('$(check)', name);
-    }
+    };
 }

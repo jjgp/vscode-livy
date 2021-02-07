@@ -9,7 +9,7 @@ export function activate({ subscriptions, workspaceState }: ExtensionContext) {
         memento: workspaceState,
         // TODO: make request timeout configurable. This may mean the API becomes an instance in the context.
         livyRestApi: new LivyRestApi({ timeout: 1000 }),
-        livyStatusDisplay: new LivyStatusBarDisplay(),
+        livyStatusBarDisplay: new LivyStatusBarDisplay(),
     };
     registerCommands(context).forEach((disposable) => subscriptions.push(disposable));
 }
