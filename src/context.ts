@@ -1,3 +1,4 @@
+import { LivyRestApi } from './livy-api';
 import { Memento } from 'vscode';
 
 export interface Enablements {}
@@ -10,5 +11,6 @@ export interface LivyStatusDisplay {
 export interface Context {
     enablements: Enablements;
     memento: Memento;
+    livyRestApi: LivyRestApi;
     livyStatusDisplay: LivyStatusDisplay;
 }
