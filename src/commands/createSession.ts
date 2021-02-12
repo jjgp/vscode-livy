@@ -23,7 +23,7 @@ export class CreateSession extends CommandRecord {
         const result = await livyStatusBarDisplay.inProgress(() => livyRestApi.postSessions(url, configuration));
         if (isSession(result)) {
             memento.update(LivyServer.activeSessionId, result.id);
-            livyStatusBarDisplay.setSessionName(name ?? result.id.toString());
+            livyStatusBarDisplay.setSessionName(name || result.id.toString());
         }
     };
 }
