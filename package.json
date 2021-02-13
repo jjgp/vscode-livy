@@ -27,7 +27,15 @@
 				"command": "vscode-livy.specifyUrl",
 				"title": "Livy: Specify Local or Remote URL hosting Livy Server"
 			}
-		]
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "vscode-livy.createSession",
+					"when": "vscode-livy.isConnectedToLivyServer"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

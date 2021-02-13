@@ -8,16 +8,19 @@ export class SpecifyUrl extends CommandRecord {
     private inputPrompt = 'Enter the URL of the Livy server';
 
     callback = async () => {
-        const { livyRestApi, livyStatusBarDisplay, memento } = this.context;
+        const { enablements, livyRestApi, livyStatusBarDisplay, memento } = this.context;
         const previousUrl = memento.get(LivyServer.url);
         const options = previousUrl
             ? { value: previousUrl, prompt: this.inputPrompt }
             : { placeHolder: this.inputPlaceHolder, prompt: this.inputPrompt };
         const url = await urlInputBox(options);
 
-        if (url) {
-            memento.update(LivyServer.url, url);
-            livyStatusBarDisplay.inProgress(() => livyRestApi.healthCheck(url));
+        if (!url) {
+            return;
         }
+
+        memento.update(LivyServer.url, url);
+        const error = await livyStatusBarDisplay.inProgress(() => livyRestApi.healthCheck(url));
+        void enablements.isConnectedToLivyServer(typeof error === 'undefined');
     };
 }
