@@ -1,0 +1,4 @@
+{
+    "vscode-livy.createSession.title": "Livy: Create Session",
+    "vscode-livy.specifyUrl.title": "Livy: Specify Local or Remote URL hosting Livy Server"
+}
